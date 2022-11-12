@@ -65,6 +65,6 @@ try:
   if not add_my_fruit:
     streamlit.error("Please enter a fruit to add")
   else:
-    streamlit.write(insert_row_snowflake(add_my_fruit)
+    streamlit.write(insert_row_snowflake(add_my_fruit))
 except URLError as e:
   streamlit.error()
