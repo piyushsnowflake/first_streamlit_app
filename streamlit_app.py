@@ -56,7 +56,7 @@ if streamlit.button('Get Fruit List'):
 def insert_row_snowflake(new_fruit):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     with mu_cnx.cursor() as my_cur:
-        my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "') ")
+        my_cur.execute("insert into fruit_load_list values (new_fruit) ")
         return "Thanks for adding " + new_fruit
     
                
@@ -65,6 +65,7 @@ try:
   if not add_my_fruit:
     streamlit.error("Please enter a fruit to add")
   else:
-    streamlit.write(insert_row_snowflake(add_my_fruit))
+    add_fruit = insert_row_snowflake(add_my_fruit)
+    streamlit.write(add_fruit)
 except URLError as e:
   streamlit.error()
